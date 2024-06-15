@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,7 +12,6 @@ const highScoreMsg =
 const lowScoreMsg =
   "Uh-oh, a dip in the score! It's okay, even gaming legends have their off days. Shake it off, level up, and show that leaderboard who's boss!";
 
-//FIXME change the background color of exit to main menu button
 export default function Game() {
   const navigate = useNavigate();
   const gameBody = useRef(null);
@@ -70,7 +69,7 @@ export default function Game() {
     }
   }
 
-  function nextSequence() {
+  const nextSequence = useCallback(() => {
     userClickedPattern = [];
     setLevel((level) => level + 1);
     const randomNumber = getRandomIntInclusive(0, 3);
@@ -94,7 +93,7 @@ export default function Game() {
       allColors.get(randomChosenColour).classList.remove("fadeIn");
     }, 200);
     playSound(randomChosenColour);
-  }
+  }, []);
 
   const getRandomIntInclusive = () => {
     const randomBuffer = new Uint32Array(1);

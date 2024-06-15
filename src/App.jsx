@@ -25,8 +25,8 @@ function App() {
           <Route element={<RouteGaurd />}>
             <Route path="/userDetails" element={<UserDetails />} />
             <Route path="/game" element={<Game />} />
-            <Route path="/rules" element={<Rules />} />
           </Route>
+          <Route path="/rules" element={<Rules />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />

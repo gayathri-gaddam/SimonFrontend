@@ -1,0 +1,9 @@
+#id-status {
+  position: absolute;
+  top: 30%;
+  right: 10px;
+}
+
+#id-status i {
+  display: none;
+}

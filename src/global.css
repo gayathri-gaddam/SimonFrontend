@@ -1,0 +1,148 @@
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  color: rgb(212, 74, 212);
+}
+
+.center h2 {
+  padding: 0 0 20px 20px;
+  border-bottom: 1px solid silver;
+}
+
+.center form {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+form .txt-field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 25px 0;
+}
+
+.txt-field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.txt-field label {
+  position: absolute;
+  top: 60%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.txt-field span:first-child:before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  color: rgb(212, 74, 212);
+  transition: 0.5s;
+}
+
+.txt-field input:focus ~ label,
+.txt-field input:valid ~ label,
+.txt-field input:disabled ~ label {
+  top: -7px;
+  color: rgb(212, 74, 212);
+}
+
+.txt-field input:focus ~ span:first-child:before,
+.txt-field input:valid ~ span:first-child:before,
+.txt-field input:disabled ~ span:first-child:before {
+  width: 100%;
+}
+
+.pass {
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+
+.pass:hover {
+  text-decoration: underline;
+  color: rgb(212, 74, 212);
+}
+
+.signup-link {
+  margin: 10px 0 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+  line-height: 20px;
+}
+
+.signup-link a {
+  color: rgb(212, 74, 212);
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.signUp {
+  padding-bottom: 15px;
+}
+
+.pop-up {
+  color: white;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: black;
+}
+
+#error-message {
+  color: #ff0000;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#success-message {
+  color: rgb(4, 186, 4);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: #02274e;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 300px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.btn:hover {
+  /* background-color: rgb(212, 74, 212); */
+  background-color: white;
+  color: #02274e;
+}

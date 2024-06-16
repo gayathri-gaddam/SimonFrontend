@@ -20,7 +20,6 @@ export default function Login() {
       axios
         .post(url, values)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             const token = res.data;
             setToken(token);
@@ -32,7 +31,6 @@ export default function Login() {
           }
         })
         .catch((err) => {
-          console.log("catch");
           setLoginSuccess(false);
           window.setTimeout(() => {
             form.resetForm();

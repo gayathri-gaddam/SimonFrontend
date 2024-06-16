@@ -24,7 +24,6 @@ export default function Signup() {
           ...values,
         })
         .then((res) => {
-          console.log(res);
           if (res.status === 201) {
             setLoginSuccess(true);
             setTimeout(() => {
@@ -33,7 +32,6 @@ export default function Signup() {
           }
         })
         .catch(({ response }) => {
-          console.log(response);
           setLoginSuccess((ls) => false);
           window.setTimeout(() => {
             form.resetForm();

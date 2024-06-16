@@ -8,7 +8,7 @@ import "./Signup.css";
 
 export default function Signup() {
   const url = import.meta.env.VITE_API_URL + "/signup";
-  const [loginSuccess, setLoginSuccess] = useState(undefined);
+  const [loginSuccess, setLoginSuccess] = useState(null);
   const navigate = useNavigate();
 
   const form = useFormik({
@@ -25,16 +25,19 @@ export default function Signup() {
         })
         .then((res) => {
           console.log(res);
-          if (res.status === 200) {
-            setLoginSuccess((ls) => true);
-            navigate("/login");
+          if (res.status === 201) {
+            setLoginSuccess(true);
+            setTimeout(() => {
+              navigate("/login");
+            }, 2000);
           }
         })
-        .catch((err) => {
+        .catch(({ response }) => {
+          console.log(response);
           setLoginSuccess((ls) => false);
           window.setTimeout(() => {
             form.resetForm();
-            setLoginSuccess((ls) => undefined);
+            setLoginSuccess(null);
           }, 3000);
         })
         .finally(() => {
@@ -69,6 +72,7 @@ export default function Signup() {
             className="htmlForm-field"
             onChange={form.handleChange}
             value={form.values.username}
+            disabled={form.isSubmitting}
           />
           <span></span>
           <label htmlFor="username">Name</label>
@@ -82,6 +86,7 @@ export default function Signup() {
             className="htmlForm-field"
             onChange={form.handleChange}
             value={form.values.userId}
+            disabled={form.isSubmitting}
           />
           <span></span>
           <span id="id-status">
@@ -107,12 +112,14 @@ export default function Signup() {
             className="htmlForm-field"
             onChange={form.handleChange}
             value={form.values.password}
+            disabled={form.isSubmitting}
           />
           <span></span>
           <span
             id="toggle-password"
             className="toggle-password"
             onClick={togglePasswordVisibility}
+            disabled={form.isSubmitting}
           >
             <i className="fa-sharp fa-solid fa-eye"></i>
           </span>
@@ -125,7 +132,7 @@ export default function Signup() {
           Already a member? <Link to="/login">Login</Link>
         </div>
       </form>
-      {loginSuccess != undefined && (
+      {loginSuccess != null && (
         <div className="message-container">
           {!loginSuccess ? (
             <p id="error-message">

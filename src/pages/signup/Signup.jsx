@@ -61,70 +61,8 @@ export default function Signup() {
     <div className="center">
       <h2>Sign up</h2>
       <form onSubmit={form.handleSubmit}>
-        <div className="txt-field">
-          <input
-            type="text"
-            required
-            name="username"
-            id="username"
-            className="htmlForm-field"
-            onChange={form.handleChange}
-            value={form.values.username}
-            disabled={form.isSubmitting}
-          />
-          <span></span>
-          <label htmlFor="username">Name</label>
-        </div>
-        <div className="txt-field">
-          <input
-            type="text"
-            required
-            name="userId"
-            id="userId"
-            className="htmlForm-field"
-            onChange={form.handleChange}
-            value={form.values.userId}
-            disabled={form.isSubmitting}
-          />
-          <span></span>
-          <span id="id-status">
-            <i
-              className="fa-solid fa-check fa-lg"
-              style={{ color: "green" }}
-              id="true"
-            ></i>
-            <i
-              className="fa-solid fa-xmark fa-lg"
-              style={{ color: "red" }}
-              id="false"
-            ></i>
-          </span>
-          <label htmlFor="userId">Username</label>
-        </div>
-        <div className="txt-field">
-          <input
-            type="password"
-            required
-            name="password"
-            id="password"
-            className="htmlForm-field"
-            onChange={form.handleChange}
-            value={form.values.password}
-            disabled={form.isSubmitting}
-          />
-          <span></span>
-          <span
-            id="toggle-password"
-            className="toggle-password"
-            onClick={togglePasswordVisibility}
-            disabled={form.isSubmitting}
-          >
-            <i className="fa-sharp fa-solid fa-eye"></i>
-          </span>
-          <label htmlFor="password">Password</label>
-        </div>
         <span className="btn" onClick={form.handleSubmit}>
-          Sign Up
+          Sign Up With Google
         </span>
         <div className="signup-link">
           Already a member? <Link to="/login">Login</Link>

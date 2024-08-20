@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import { UserDataProvider } from "./context/UserDataContext";
-import { Home, Game, Login, Signup, UserDetails, Rules } from "./pages/index";
+import { Home, Game, Login, UserDetails, Rules } from "./pages/index";
 import RouteGaurd from "./components/RouteGaurd";
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
           </Route>
           <Route path="/rules" element={<Rules />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>

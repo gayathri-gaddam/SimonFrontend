@@ -1,6 +1,17 @@
 .game-body {
   text-align: center;
   height: 600px;
+  color: #fffae1;
+}
+
+.modes {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 35px;
+}
+
+.modes > span {
+  cursor: pointer;
 }
 
 .game-header {
@@ -12,12 +23,10 @@
   align-items: center;
   justify-content: space-between;
   width: 50rem;
-  color: #fffae1;
   margin: auto;
 }
 
 .game-message-section {
-  color: #fffae1;
   line-height: 30px;
 }
 
@@ -72,6 +81,14 @@
   background-color: yellow;
 }
 
+.game-brown {
+  background-color: brown;
+}
+
+.game-pink {
+  background-color: pink;
+}
+
 .game-pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
@@ -94,12 +111,10 @@
   border-radius: 5px;
   text-decoration: none;
   background-color: #16bcdd;
-  color: #e9e9e9;
   padding: 10px 20px;
 }
 
 #navigate-btn:hover {
-  color: white;
   background-color: #011f3f;
   box-shadow: 5px 5px 20px 0px white;
 }

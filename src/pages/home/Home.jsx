@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { signOut } from "firebase/auth";
 
 import "./Home.css";
 import logo from "../../assets/logo.svg";
 import { UserDataContext } from "../../context/UserDataContext";
 import "../../global.css";
+import { auth } from "../../utils/firebase";
 
 export default function Home() {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -21,14 +23,14 @@ export default function Home() {
         {userData && (
           <>
             <div className="name-section">
-              <h1 id="welcome">Welcome {userData.userId}</h1>
+              <h1 id="welcome">Welcome {userData.name}</h1>
             </div>
-            <div className="home-score-section">
+            {/* <div className="home-score-section">
               <h2>
                 <span id="username">Highest Score {userData.highestScore}</span>
               </h2>
               <p>Beat your own record!</p>
-            </div>
+            </div> */}
           </>
         )}
         <div className="items-section">
@@ -65,6 +67,9 @@ export default function Home() {
                     onClick={() => {
                       setUserData(null);
                       setToken(null);
+                      signOut(auth)
+                        .then(() => console.log("log out successful"))
+                        .catch((err) => console.log(err));
                     }}
                   >
                     Yes

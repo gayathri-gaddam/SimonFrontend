@@ -1,15 +1,11 @@
-.logo {
-  margin-top: 0.5rem;
-}
-
 .home-container {
   max-width: 800px;
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 20px;
 }
 
 .name-section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 

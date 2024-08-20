@@ -57,7 +57,7 @@ export default function UserDetails() {
             name="username"
             className="user-details-input form-field"
             disabled={!isEditable}
-            value={userData.username}
+            value={userData.name}
           />
         </div>
         {isEditable && (

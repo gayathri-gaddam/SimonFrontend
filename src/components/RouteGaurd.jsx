@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+
+import { auth } from "../utils/firebase";
 import { UserDataContext } from "../context/UserDataContext";
 import { Outlet, Navigate } from "react-router-dom";
 

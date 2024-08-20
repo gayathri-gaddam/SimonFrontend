@@ -1,112 +1,74 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 import "../../global.css";
+import "./Login.css";
 import { UserDataContext } from "../../context/UserDataContext";
-import { jwtDecode } from "jwt-decode";
+import { auth, googleProvider, db } from "../../utils/firebase";
 
 export default function Login() {
   const { setUserData, setToken } = useContext(UserDataContext);
   const url = import.meta.env.VITE_API_URL + "/login";
   const [loginSuccess, setLoginSuccess] = useState(null);
   const navigate = useNavigate();
-  const form = useFormik({
-    initialValues: { userId: "", password: "" },
-    onSubmit: (values, action) => {
-      action.setSubmitting(true);
-      axios
-        .post(url, values)
-        .then((res) => {
-          if (res.status === 200) {
-            const token = res.data;
-            setToken(token);
-            setUserData(jwtDecode(token).user);
-            setLoginSuccess(true);
-            setTimeout(() => {
-              navigate("/");
-            }, 2000);
+
+  const handleLogin = () => {
+    signInWithPopup(auth, googleProvider)
+      .then(async (result) => {
+        if (!result) {
+          const userRef = doc(db, "users", auth.currentUser.email);
+          const userSnap = await getDoc(userRef);
+          setUserData(userSnap.data());
+        } else {
+          const userData = result.user;
+          const userRef = doc(db, "users", userData.email);
+          const userSnap = await getDoc(userRef);
+          let user;
+          if (!userSnap.exists()) {
+            user = {
+              name: userData.displayName,
+              highestScore: { easy: 0, hard: 0 },
+              lastLogin: new Date(),
+              createdAt: new Date(),
+              email: userData.email,
+            };
+          } else {
+            user = {
+              ...userSnap.data(),
+              lastLogin: new Date(),
+            };
           }
-        })
-        .catch((err) => {
-          setLoginSuccess(false);
-          window.setTimeout(() => {
-            form.resetForm();
-            setLoginSuccess((ls) => undefined);
-          }, 2000);
-        })
-        .finally(() => {
-          action.setSubmitting(false);
-        });
-    },
-  });
-
-  const togglePasswordVisibility = () => {
-    const passwordInput = document.getElementById("password");
-    const toggleButton = document.getElementById("toggle-password");
-
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      toggleButton.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
-    } else {
-      passwordInput.type = "password";
-      toggleButton.innerHTML = '<i class="fa-sharp fa-solid fa-eye"></i>';
-    }
+          setUserData(user);
+          try {
+            await setDoc(userRef, user);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        }
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorMessage);
+      });
   };
 
   return (
     <div className="center">
       <h2>Login</h2>
-      <form onSubmit={form.handleSubmit}>
-        <div className="txt-field">
-          <input
-            type="text"
-            name="userId"
-            id="userId"
-            className="form-field"
-            onChange={form.handleChange}
-            value={form.values.userId}
-            disabled={form.isSubmitting}
-            required
-          />
-          <span></span>
-          <label htmlFor="userId">Username</label>
-        </div>
-        <div className="txt-field" style={{ position: "relative" }}>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            required
-            className="form-field"
-            onChange={form.handleChange}
-            value={form.values.password}
-            disabled={form.isSubmitting}
-          />
-          <span></span>
-          <span
-            id="toggle-password"
-            className="toggle-password"
-            onClick={togglePasswordVisibility}
-          >
-            <i className="fa-sharp fa-solid fa-eye"></i>
-          </span>
-          <label htmlFor="password">Password</label>
-        </div>
-        <div className="pass">Forgot Password?</div>
-        <span
-          onClick={form.handleSubmit}
-          className="btn"
-          disabled={form.isSubmitting}
-        >
-          Login
+      <div className="login-btn-container">
+        <span onClick={handleLogin} className="btn">
+          Login with Google
         </span>
-        <div className="signup-link">
-          Not a member? <Link to="/signup">Signup</Link>
-        </div>
-      </form>
+      </div>
       {loginSuccess != null && (
         <div>
           {!loginSuccess ? (

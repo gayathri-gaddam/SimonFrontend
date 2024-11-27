@@ -4,5 +4,7 @@ import Rules from "./rules/Rules";
 import Login from "./login/Login";
 import Signup from "./signup/Signup";
 import UserDetails from "./userDetails/UserDetails";
-
-export { Home, Game, Rules, Login, Signup, UserDetails };
+import GameMode from "./gameMode/Gamemode";
+import Voice from "./game/Voice";
+import Gesture from "./game/Gesture";
+export { Home, Game, Rules, Login, Signup, UserDetails,GameMode,Voice, Gesture };

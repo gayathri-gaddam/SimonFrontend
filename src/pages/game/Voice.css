@@ -1,0 +1,120 @@
+.game-pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+.game-btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.game-red {
+  background-color: red;
+}
+
+.game-green {
+  background-color: green;
+}
+
+.game-blue {
+  background-color: blue;
+}
+
+.game-yellow {
+  background-color: yellow;
+}
+
+.game-body {
+  text-align: center;
+  height: 600px;
+}
+#navigate-btn {
+  border-radius: 5px;
+  text-decoration: none;
+  background-color: #16bcdd;
+  color: #e9e9e9;
+  padding: 10px 20px;
+}
+
+#navigate-btn:hover {
+  color: white;
+  background-color: #011f3f;
+  box-shadow: 5px 5px 20px 0px white;
+}
+/* General styles */
+.game-body {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Game Over Screen Styles */
+.game-score-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fffae1;
+  margin: 20px 0;
+}
+
+.game-message-section {
+  color: #fffae1;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.game-items-section {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #16bcdd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #011f3f;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Over Header */
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #fffae1;
+}
+
+/* Score Display */
+h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+/* Message Styling */
+#message {
+  font-size: 18px;
+  color: #fffae1;
+  margin-top: 10px;
+}

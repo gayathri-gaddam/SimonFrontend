@@ -1,0 +1,72 @@
+/* Main container for the Game Mode Selection page */
+.game-mode-selection {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    text-align: center;
+    color: #fffae1;
+  }
+  
+  /* Logo styling (optional, if you have a logo in this component) */
+  .logo {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Header styling for the title */
+  .game-mode-selection h1 {
+    margin-bottom: 2rem;
+    font-size: 2.5em;
+    color: #fffae1;
+  }
+  
+  /* Container for the mode selection buttons */
+  .mode-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Styling for each button (matches Home.css button styling) */
+  .mode-buttons button {
+    width: 260px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    background-color: #16bcdd;
+    color: #e9e9e9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover effect for the buttons */
+  .mode-buttons button:hover {
+    background-color: #011f3f;
+    color: #fff;
+  }
+  
+  /* Active state (click effect) for the buttons */
+  .mode-buttons button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Focus state for accessibility */
+  .mode-buttons button:focus {
+    outline: none;
+  }
+  
+  /* Additional message section styling */
+  .selection-message {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #fffae1;
+  }
+  
+  /* Consistent hover effect for all spans (if used in this component) */
+  span:hover {
+    opacity: 0.8;
+  }
+  

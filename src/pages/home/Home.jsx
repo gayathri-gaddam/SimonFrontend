@@ -34,7 +34,7 @@ export default function Home() {
         <div className="items-section">
           <ul>
             <li>
-              <Link to="/game" style={{ textDecoration: "none" }}>
+              <Link to="/gameMode" style={{ textDecoration: "none" }}>
                 <span>Start</span>
               </Link>
             </li>

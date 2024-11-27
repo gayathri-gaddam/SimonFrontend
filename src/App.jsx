@@ -1,7 +1,16 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-
 import { UserDataProvider } from "./context/UserDataContext";
-import { Home, Game, Login, Signup, UserDetails, Rules } from "./pages/index";
+import {
+  Home,
+  Game,
+  Login,
+  Signup,
+  UserDetails,
+  Rules,
+  GameMode,
+  Voice,
+  Gesture,
+} from "./pages/index";
 import RouteGaurd from "./components/RouteGaurd";
 
 function App() {
@@ -25,10 +34,13 @@ function App() {
           <Route element={<RouteGaurd />}>
             <Route path="/userDetails" element={<UserDetails />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/voice" element={<Voice />} />
+            <Route path="/gesture" element={<Gesture/>}/>
           </Route>
           <Route path="/rules" element={<Rules />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/gameMode" element={<GameMode />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
